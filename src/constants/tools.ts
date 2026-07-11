@@ -8,6 +8,14 @@ export const tools = [
       featured: true,
     },
     {
+      title: "JWT Decoder",
+      description: "Decode JWT tokens securely in your browser.",
+      href: "/tools/jwt-decoder",
+      icon: "🔑",
+      available: true,
+      featured: true,
+    },
+    {
       title: "UUID Generator",
       description: "Generate secure UUIDs.",
       icon: "🆔",
