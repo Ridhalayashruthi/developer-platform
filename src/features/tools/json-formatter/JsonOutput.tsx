@@ -12,6 +12,7 @@ interface JsonOutputProps {
 
 export default function JsonOutput({ input, output, error }: JsonOutputProps) {
   const [copied, setCopied] = useState(false);
+
   return (
     <div className='h-[500px] rounded-xl border border-slate-700 bg-slate-900 p-5 flex flex-col'>
       <div className='mb-3 flex items-center justify-between'>
@@ -70,9 +71,11 @@ export default function JsonOutput({ input, output, error }: JsonOutputProps) {
       </div>
 
       {/* FIXED */}
-      <div className='mt-4 border-t border-slate-700 pt-3'>
-        <JsonStats json={output} />
-      </div>
+      {output && (
+        <div className='mt-4 border-t border-slate-700 pt-3'>
+          <JsonStats json={output} />
+        </div>
+      )}
     </div>
   );
 }

@@ -27,8 +27,8 @@ export const tools = [
       title: "Base64 Encoder",
       description: "Encode and decode Base64.",
       icon: "🔐",
-      href: "#",
-      available: false,
+      href: "/tools/base64-encoder",
+      available: true,
       featured: true,
     },
     {
