@@ -1,25 +1,45 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import Navbar from '@/components/layout/Navbar';
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Developer Platform',
-    template: '%s | Developer Platform',
+    default: "Developer Platform | Free Browser Dev Tools, Interview Prep & Roadmaps",
+    template: "%s | Developer Platform",
   },
   description:
-    'Learn, build, practice, and grow with AI-powered developer tools, interview preparation, and career resources.',
+    "Free client-side developer tools (JSON Formatter, JWT Decoder, UUID Generator, Regex Tester, Base64, Password Generator), coding interview Q&A, and interactive career roadmaps.",
+  keywords: [
+    "developer tools online",
+    "JSON formatter",
+    "JWT decoder",
+    "UUID v4 generator",
+    "regex tester",
+    "frontend interview questions",
+    "developer roadmaps",
+  ],
+  openGraph: {
+    title: "Developer Platform — Build Faster, Learn Smarter, Get Hired",
+    description:
+      "7+ browser-based developer utilities, searchable interview Q&A, and interactive career roadmaps.",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -29,15 +49,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang='en'
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen flex flex-col bg-background text-foreground">
         <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
