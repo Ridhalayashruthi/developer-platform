@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#### Developer Platform — Client-Side Dev Tools, Interview Prep & Career Roadmaps
 
-## Getting Started
+An all-in-one, privacy-first web platform built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS** that brings together 7 browser-based developer utilities, a searchable technical interview Q&A bank, interactive career roadmaps, and AI prompt engineering tools. 
 
-First, run the development server:
+* **Live Production App:** [https://devtoolkit-hub.vercel.app](https://devtoolkit-hub.vercel.app)
+* **GitHub Repository:** [https://github.com/Ridhalayashruthi/developer-platform](https://github.com/Ridhalayashruthi/developer-platform)
 
-```bash
+#### Core Modules & Features
+
+#### 1. 7 Client-Side Developer Utilities (/tools)
+
+All tools execute 100% locally inside browser memory with zero backend logging: 
+
+* **JSON Formatter & Validator:** Real-time syntax validation, formatting, minification, and line numbers.
+* **JWT Decoder:** Inspect header, payload claims, and expiration timestamps locally.
+* **UUID v4 Generator:** Bulk cryptographically random identifier generation via crypto.randomUUID().
+* **Base64 Encoder / Decoder:** Instant UTF-8 safe text encoding and decoding.
+* **Color Picker & Converter:** Live HEX, RGB, HSL, and CSS custom property conversion.
+* **JavaScript Regex Tester:** Real-time ECMAScript pattern testing with flag controls and live match extraction.
+* **Cryptographic Password Generator:** CSPRNG password generation (crypto.getRandomValues) with customizable entropy.
+
+#### 2. Interactive Interview Preparation (/interview)
+
+* Topic-filtered and searchable Q&A bank covering **React, JavaScript, TypeScript, System Design, and DSA** with expandable explanations and syntax-highlighted code snippets.
+
+#### 3. Developer Career Roadmaps (/roadmaps)
+
+* Interactive milestone checklists with live completion progress tracking across **Frontend Engineer, Backend & APIs, DevOps & Cloud, and AI Application Engineer** tracks.
+
+#### 4. AI Engineering Hub (/ai)
+
+* Real-time client-side **LLM Token & Context Estimator** paired with copy-ready prompts for code reviews, unit testing, SQL optimization, and system design.
+
+#### 5. Technical SEO & Trust Architecture
+
+* Automated 15-route sitemap.xml, robots.txt, OpenGraph metadata, and dedicated /about, /privacy-policy, and /terms pages.
+
+#### Tech Stack
+
+* **Framework:** Next.js 16 (App Router) & React 19
+* **Language:** TypeScript (Strict Mode)
+* **Styling:** Tailwind CSS v4, shadcn/ui primitives & Lucide Icons
+* **Architecture:** Feature-based modular folder structure (src/features/*)
+* **Deployment:** Vercel CI/CD
+
+#### Getting Started Locally
+
+#### bash
+git clone https://github.com/Ridhalayashruthi/developer-platform.git
+cd developer-platform
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

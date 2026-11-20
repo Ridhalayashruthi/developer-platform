@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://vercel.app";
+  const baseUrl = "https://devtoolkit-hub.vercel.app/";
   const routes = [
     "",
     "/tools",
