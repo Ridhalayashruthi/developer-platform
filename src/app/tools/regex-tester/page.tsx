@@ -2,6 +2,8 @@
 
 import React, { useState, useMemo } from "react";
 import Container from "@/components/common/Container";
+import ToolGuide from "@/components/tools/ToolGuide";
+import { TOOL_GUIDES } from "@/constants/toolGuides";
 
 export default function RegexTesterPage() {
   const [pattern, setPattern] = useState("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
@@ -124,6 +126,7 @@ export default function RegexTesterPage() {
             </p>
           </section>
         </div>
+        <ToolGuide {...TOOL_GUIDES["json-formatter"]} />
       </Container>
     </div>
   );

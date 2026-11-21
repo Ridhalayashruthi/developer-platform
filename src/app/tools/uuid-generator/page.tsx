@@ -3,6 +3,8 @@
 import React, { useState, useSyncExternalStore } from "react";
 import Container from "@/components/common/Container";
 import { Copy, Check, RefreshCw } from "lucide-react";
+import ToolGuide from "@/components/tools/ToolGuide";
+import { TOOL_GUIDES } from "@/constants/toolGuides";
 
 const emptySubscribe = () => () => {};
 
@@ -171,6 +173,7 @@ export default function UuidGeneratorPage() {
             </p>
           </section>
         </div>
+        <ToolGuide {...TOOL_GUIDES["json-formatter"]} />
       </Container>
     </div>
   );

@@ -3,6 +3,8 @@
 import React, { useState, useSyncExternalStore } from "react";
 import Container from "@/components/common/Container";
 import { Copy, Check, RefreshCw, ShieldCheck } from "lucide-react";
+import ToolGuide from "@/components/tools/ToolGuide";
+import { TOOL_GUIDES } from "@/constants/toolGuides";
 
 const emptySubscribe = () => () => {};
 
@@ -190,6 +192,7 @@ export default function PasswordGeneratorPage() {
             </p>
           </section>
         </div>
+        <ToolGuide {...TOOL_GUIDES["json-formatter"]} />
       </Container>
     </div>
   );

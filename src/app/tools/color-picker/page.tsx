@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Container from '@/components/common/Container';
 import { Copy, Check } from 'lucide-react';
+import ToolGuide from '@/components/tools/ToolGuide';
+import { TOOL_GUIDES } from '@/constants/toolGuides';
 
 function hexToRgb(hex: string) {
   const clean = hex.replace('#', '');
@@ -149,6 +151,7 @@ export default function ColorPickerPage() {
             </p>
           </section>
         </div>
+        <ToolGuide {...TOOL_GUIDES["json-formatter"]} />
       </Container>
     </div>
   );
