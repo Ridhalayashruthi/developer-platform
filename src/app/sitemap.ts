@@ -1,29 +1,42 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://devtoolkit-hub.vercel.app/";
-  const routes = [
-    "",
-    "/tools",
-    "/tools/json-formatter",
-    "/tools/jwt-decoder",
-    "/tools/uuid-generator",
-    "/tools/base64-encoder",
-    "/tools/color-picker",
-    "/tools/regex-tester",
-    "/tools/password-generator",
-    "/interview",
-    "/roadmaps",
-    "/ai",
-    "/about",
-    "/privacy-policy",
-    "/terms",
-  ];
+const BASE_URL = "https://vercel.app";
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.8,
+// Update these slugs to match the exact route names in your app
+const toolSlugs = [
+  "json-formatter",
+  "jwt-decoder",
+  "uuid-generator",
+  "regex-tester",
+  "base64",
+  "password-generator",
+  "url-encoder",
+];
+
+const staticRoutes = [
+  "",
+  "/tools",
+  "/interview",
+  "/roadmaps",
+  "/ai",
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
+  const mainPages: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+    url: `${BASE_URL}${route}`,
+    lastModified: now,
+    changeFrequency: route === "" ? "daily" : "weekly",
+    priority: route === "" ? 1.0 : 0.8,
   }));
+
+  const toolPages: MetadataRoute.Sitemap = toolSlugs.map((slug) => ({
+    url: `${BASE_URL}/tools/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  return [...mainPages, ...toolPages];
 }
