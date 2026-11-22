@@ -23,6 +23,26 @@ const nextConfig: NextConfig = {
         destination: "/roadmaps",
         permanent: true,
       },
+      {
+        source: "/tools/duplicate-line-remover",
+        destination: "/tools",
+        permanent: true,
+      },
+      {
+        source: "/tools/hmac-generator",
+        destination: "/tools",
+        permanent: true,
+      },
+      {
+        source: "/tools/image-compressor",
+        destination: "/tools",
+        permanent: true,
+      },
+      {
+        source: "/tools/subnet-calculator",
+        destination: "/tools",
+        permanent: true,
+      },
     ];
   },
 };
