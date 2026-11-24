@@ -2,7 +2,9 @@ import type { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
 
-const BASE_URL = "https://vercel.app";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://devtoolkit-hub.vercel.app";
 
 function getActualToolSlugs(): string[] {
   const toolsDir = path.join(process.cwd(), "src/app/tools");
@@ -23,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/roadmaps",
     "/ai",
     "/about",
+    "/contact",
     "/privacy-policy",
     "/terms",
   ];
@@ -31,14 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}${route}`,
     lastModified: now,
     changeFrequency: route === "" ? "daily" : "weekly",
-    priority: route === "" ? 1.0 : 0.8,
+    priority: route === "" ? 1.0 : 0.85,
   }));
 
   const toolPages: MetadataRoute.Sitemap = getActualToolSlugs().map((slug) => ({
     url: `${BASE_URL}/tools/${slug}`,
     lastModified: now,
     changeFrequency: "weekly",
-    priority: 0.7,
+    priority: 0.9,
   }));
 
   return [...mainPages, ...toolPages];
