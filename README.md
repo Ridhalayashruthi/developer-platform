@@ -1,53 +1,87 @@
-#### DevToolkit Hub — Client-Side Dev Tools, Interview Prep & Career Roadmaps
+#### DevToolkit Hub
 
-An all-in-one, privacy-first web platform built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS** that brings together 7 browser-based developer utilities, a searchable technical interview Q&A bank, interactive career roadmaps, and AI prompt engineering tools.
+**100% Client-Side Developer Utilities, DevDocuSign PDF Signer, Salary & Freelance Calculators, and Engineering Career Prep.** 
 
-- **Live Production App:** [https://devtoolkit-hub.vercel.app](https://devtoolkit-hub.vercel.app)
-- **GitHub Repository:** [https://github.com/Ridhalayashruthi/developer-platform](https://github.com/Ridhalayashruthi/developer-platform)
+🔗 **Live App:** [https://devtoolkit-hub.vercel.app/](https://devtoolkit-hub.vercel.app/) 
 
-#### Core Modules & Features
+#### ✨ Why DevToolkit Hub?
 
-#### 1. 7 Client-Side Developer Utilities (/tools)
+Developers often need to decode JWTs, format JSON payloads, generate UUIDs, or sign confidential PDF contracts—without pasting sensitive data into third-party servers. 
 
-All tools execute 100% locally inside browser memory with zero backend logging:
+**DevToolkit Hub** executes all tool logic **100% locally in browser memory**: 
 
-- **JSON Formatter & Validator:** Real-time syntax validation, formatting, minification, and line numbers.
-- **JWT Decoder:** Inspect header, payload claims, and expiration timestamps locally.
-- **UUID v4 Generator:** Bulk cryptographically random identifier generation via crypto.randomUUID().
-- **Base64 Encoder / Decoder:** Instant UTF-8 safe text encoding and decoding.
-- **Color Picker & Converter:** Live HEX, RGB, HSL, and CSS custom property conversion.
-- **JavaScript Regex Tester:** Real-time ECMAScript pattern testing with flag controls and live match extraction.
-- **Cryptographic Password Generator:** CSPRNG password generation (crypto.getRandomValues) with customizable entropy.
+* **Zero Server Uploads:** Files, tokens, and inputs never leave your device.
+* **No Signups or Paywalls:** Instant access to every utility and calculator.
+* **Fast & Privacy-First:** Built with Web Crypto APIs, pdf-lib, and PDF.js.
 
-#### 2. Interactive Interview Preparation (/interview)
+#### 🛠️ What's Inside (12 Live Tools + Career Hub)
 
-- Topic-filtered and searchable Q&A bank covering **React, JavaScript, TypeScript, System Design, and DSA** with expandable explanations and syntax-highlighted code snippets.
+#### ✍️ Flagship PDF Tool
 
-#### 3. Developer Career Roadmaps (/roadmaps)
+* **[DevDocuSign (PDF Signer)](https://devtoolkit-hub.vercel.app/tools/pdf-signer):** Draw, type, or upload signatures, position and resize across multi-page PDFs, add date stamps, and export flattened PDFs locally.
 
-- Interactive milestone checklists with live completion progress tracking across **Frontend Engineer, Backend & APIs, DevOps & Cloud, and AI Application Engineer** tracks.
+#### ⚡ Developer Utilities
 
-#### 4. AI Engineering Hub (/ai)
+* **[JSON Formatter & Validator](https://devtoolkit-hub.vercel.app/tools/json-formatter):** Beautify, minify, and validate JSON payloads with real-time syntax error detection.
+* **[JWT Decoder](https://devtoolkit-hub.vercel.app/tools/jwt-decoder):** Inspect JWT headers, payload claims, and expiration timestamps locally.
+* **[UUID Generator](https://devtoolkit-hub.vercel.app/tools/uuid-generator):** Generate cryptographically secure v4 UUIDs in single or bulk batches.
+* **[Base64 Encoder / Decoder](https://devtoolkit-hub.vercel.app/tools/base64-encoder):** Convert UTF-8 text and Base64 strings instantaneously.
+* **[Color Picker](https://devtoolkit-hub.vercel.app/tools/color-picker):** Convert visually between HEX, RGB, HSL, and CSS variables.
+* **[Regex Tester](https://devtoolkit-hub.vercel.app/tools/regex-tester):** Test JavaScript regular expressions with flags and live match highlighting.
+* **[Password Generator](https://devtoolkit-hub.vercel.app/tools/password-generator):** Generate high-entropy passwords via Web Crypto CSPRNG (crypto.getRandomValues).
+* **[Unix Timestamp Converter](https://devtoolkit-hub.vercel.app/tools/timestamp-converter):** Convert epoch timestamps (seconds/milliseconds) to UTC, ISO-8601, and local time.
 
-- Real-time client-side **LLM Token & Context Estimator** paired with copy-ready prompts for code reviews, unit testing, SQL optimization, and system design.
+#### 💰 Salary & Freelance Calculators
 
-#### 5. Technical SEO & Trust Architecture
+* **[CTC to In-Hand Calculator](https://devtoolkit-hub.vercel.app/tools/ctc-calculator):** Estimate monthly take-home salary under India's New Tax Regime with EPF and professional tax breakdowns.
+* **[Freelance Rate Calculator](https://devtoolkit-hub.vercel.app/tools/freelance-rate-calculator):** Calculate minimum sustainable hourly, daily, and monthly retainer rates across USD, EUR, and INR.
+* **[Salary Hike Calculator](https://devtoolkit-hub.vercel.app/tools/salary-hike-calculator):** Compare competing job offers, percentage increments, and monthly take-home jumps.
 
-- Automated 15-route sitemap.xml, robots.txt, OpenGraph metadata, and dedicated /about, /privacy-policy, and /terms pages.
+#### 🎯 Career & Learning Hub
 
-#### Tech Stack
+* **[Interview Q&A Bank](https://devtoolkit-hub.vercel.app/interview):** Senior-level technical interview questions, architecture trade-offs, and explanations.
+* **[Developer Roadmaps](https://devtoolkit-hub.vercel.app/roadmaps):** Interactive learning paths for Frontend, Backend, Full-Stack, and AI Engineering.
+* **[AI Prompt & Token Estimator](https://devtoolkit-hub.vercel.app/ai):** Estimate prompt token usage and LLM API costs locally.
 
-- **Framework:** Next.js 16 (App Router) & React 19
-- **Language:** TypeScript (Strict Mode)
-- **Styling:** Tailwind CSS v4, shadcn/ui primitives & Lucide Icons
-- **Architecture:** Feature-based modular folder structure (src/features/\*)
-- **Deployment:** Vercel CI/CD
+#### 🧱 Tech Stack
 
-#### Getting Started Locally
+* **Framework:** Next.js 16 (App Router)
+* **UI & Language:** React 19, TypeScript 5
+* **Styling:** Tailwind CSS v4, shadcn/ui (@base-ui/react), Lucide React
+* **Client-Side PDF & Crypto:** pdf-lib, pdfjs-dist (PDF.js), Web Crypto API
+* **Deployment & SEO:** Vercel, Dynamic sitemap.ts & robots.ts, Google Analytics 4
 
-#### bash
+#### 🚀 Getting Started Locally
 
+bash
+
+# 1. Clone the repository
 git clone https://github.com/Ridhalayashruthi/developer-platform.git
 cd developer-platform
+
+# 2. Install dependencies
 npm install
+
+# 3. Run the development server
 npm run dev
+
+Use code with caution.
+
+Copy code text to clipboard.
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to explore the workspace. 
+
+#### Useful Scripts
+
+bash
+
+npm run check   # Run TypeScript typecheck + ESLint on src/
+npm run build   # Build production bundle
+
+Use code with caution.
+
+Copy code text to clipboard.
+
+#### 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
