@@ -1,0 +1,85 @@
+{
+  "react 19": {
+    "createdAt": "2026-11-25T18:10:50.582Z",
+    "questions": [
+      {
+        "topic": "React",
+        "difficulty": "Intermediate",
+        "question": "How does React 19's `useActionState` hook simplify asynchronous state management during form actions compared to legacy patterns?",
+        "answer": "React 19 introduces `useActionState` to streamline handling asynchronous operations within forms and actions. It accepts an action function and initial state, returning the current state, a wrapped action trigger function, and an `isPending` boolean flag. This eliminates the need for manual state tracking (`isLoading`, `error`, `data`) and `useEffect` wrappers around API calls, while automatically integrating with React Suspense and Transitions.",
+        "followUp": "How does `useActionState` interact with Progressive Enhancement when running in server-rendered frameworks like Next.js or Remix?",
+        "code": "import { useActionState } from 'react';\n\nasync function updateNameAction(previousState: { name: string }, formData: FormData) {\n  const newName = formData.get('name') as string;\n  const updatedUser = await fetch('/api/user', { method: 'POST', body: JSON.stringify({ name: newName }) }).then(res => res.json());\n  return updatedUser;\n}\n\nexport function ProfileForm() {\n  const [state, formAction, isPending] = useActionState(updateNameAction, { name: 'Alice' });\n\n  return (\n    <form action={formAction}>\n      <input type=\"text\" name=\"name\" defaultValue={state.name} />\n      <button type=\"submit\" disabled={isPending}>Save</button>\n    </form>\n  );\n}",
+        "id": "ai-react-19-1795630250581-1"
+      },
+      {
+        "topic": "React",
+        "difficulty": "Senior",
+        "question": "How does `useOptimistic` manage state rollbacks in React 19 during asynchronous updates, and how does it prevent race conditions with server responses?",
+        "answer": "`useOptimistic` allows components to render temporary, optimistic states while an async action is pending. It receives the current base state and an update function. When an action starts, `addOptimistic` is invoked to immediately reflect changes on screen. Once the async action finishes or throws an error, React automatically discards the optimistic state and reverts to the actual state returned by the server, preserving UI continuity without requiring manual rollback state logic.",
+        "followUp": "What happens if multiple concurrent optimistic updates are dispatched out of order, and how does React reconcile them?",
+        "code": "import { useOptimistic, useState } from 'react';\n\ntype Message = { id: string; text: string; sending?: boolean };\n\nexport function Thread({ messages, sendMessage }: { messages: Message[]; sendMessage: (formData: FormData) => Promise<void> }) {\n  const [optimisticMessages, addOptimisticMessage] = useOptimistic(\n    messages,\n    (state, newMessageText: string) => [\n      ...state,\n      { id: crypto.randomUUID(), text: newMessageText, sending: true }\n    ]\n  );\n\n  async function action(formData: FormData) {\n    const text = formData.get('message') as string;\n    addOptimisticMessage(text);\n    await sendMessage(formData);\n  }\n\n  return (\n    <form action={action}>\n      {optimisticMessages.map(msg => (\n        <div key={msg.id}>{msg.text} {msg.sending && '(Sending...)'}</div>\n      ))}\n      <input name=\"message\" required />\n      <button type=\"submit\">Send</button>\n    </form>\n  );\n}",
+        "id": "ai-react-19-1795630250581-2"
+      },
+      {
+        "topic": "React",
+        "difficulty": "Intermediate",
+        "question": "What makes the React 19 `use` API structurally different from standard React Hooks like `useContext` or `useState`?",
+        "answer": "Unlike traditional React Hooks, the `use` API can be called conditionally within `if` blocks and loops. It can unwrap Promises and consume Contexts. When passed a Promise, `use` suspends the component until the Promise resolves, integrating directly with `<Suspense>` and `<ErrorBoundary>` primitives without requiring custom promise-wrapping abstractions.",
+        "followUp": "Why is passing an inline-created Promise (e.g., `use(fetchData())`) directly into the `use` API inside render an anti-pattern?",
+        "code": "import { use, Suspense } from 'react';\n\ninterface User { id: string; name: string; }\n\nfunction UserDetails({ userPromise }: { userPromise: Promise<User> }) {\n  // Can unwrap promises directly inside component render\n  const user = use(userPromise);\n  return <h2>{user.name}</h2>;\n}\n\nexport function Profile({ userPromise }: { userPromise: Promise<User> }) {\n  return (\n    <Suspense fallback={<div>Loading user...</div>}>\n      <UserDetails userPromise={userPromise} />\n    </Suspense>\n  );\n}",
+        "id": "ai-react-19-1795630250581-3"
+      },
+      {
+        "topic": "React",
+        "difficulty": "Beginner",
+        "question": "How does React 19 change ref passing and Callback Ref handling in functional components?",
+        "answer": "React 19 deprecates `forwardRef` by allowing `ref` to be passed directly as a standard prop to function components. Additionally, callback refs now support returning a cleanup function (similar to `useEffect`). This cleanup function runs when the component unmounts or when the ref element changes, resolving issues with double-invoked cleanup logic.",
+        "followUp": "Why does returning an implicit value in a single-line arrow function for a callback ref cause TypeScript errors in React 19?",
+        "code": "import { ReactNode } from 'react';\n\n// 1. Direct ref as prop (no forwardRef needed)\nfunction CustomInput({ ref, placeholder }: { ref?: React.Ref<HTMLInputElement>; placeholder: string }) {\n  return <input ref={ref} placeholder={placeholder} />;\n}\n\n// 2. Cleanup function inside callback ref\nfunction AutoFocusInput() {\n  return (\n    <input\n      ref={(node) => {\n        if (!node) return;\n        node.focus();\n        return () => {\n          // Optional cleanup executed on unmount/re-bind\n          console.log('Element removed from DOM');\n        };\n      }}\n    />\n  );\n}",
+        "id": "ai-react-19-1795630250581-4"
+      },
+      {
+        "topic": "React",
+        "difficulty": "Senior",
+        "question": "How does the React 19 Compiler (Forget) impact performance optimization strategies, and when are `useMemo` and `useCallback` still necessary?",
+        "answer": "The React Compiler automatically memoizes component renders, props, and hook dependencies at build time by analyzing JavaScript semantically. This makes explicit `useMemo` and `useCallback` calls largely redundant in normal application code. Manual memoization remains relevant only for legacy stability compliance, escaping strict purity rules, or working with non-analyzable external data structures and third-party integrations.",
+        "followUp": "How can teams prepare legacy codebases with non-pure renders or mutating operations for adoption of the React Compiler?",
+        "code": "// Before React 19 Compiler:\n// const memoizedCallback = useCallback(() => doSomething(a, b), [a, b]);\n// const memoizedValue = useMemo(() => computeExpensiveValue(a), [a]);\n\n// With React 19 Compiler (Written cleanly without explicit memoization primitives):\nexport function ProductList({ items, filter }: { items: Item[]; filter: string }) {\n  // Automatically memoized by compiler:\n  const filteredItems = items.filter(item => item.category === filter);\n  const handleSelect = (id: string) => console.log('Selected', id);\n\n  return <List items={filteredItems} onSelect={handleSelect} />;\n}",
+        "id": "ai-react-19-1795630250581-5"
+      }
+    ]
+  },
+  "typescript initialisation": [
+    {
+      "topic": "TypeScript",
+      "difficulty": "Beginner",
+      "question": "What is the Definite Assignment Assertion operator in TypeScript, and how does it affect variable initialization?",
+      "answer": "The Definite Assignment Assertion operator (`!`) tells the TypeScript compiler that a variable is guaranteed to be assigned a value before use, even if static analysis cannot detect it. It suppresses the 'Variable is used before being assigned' error. This is common when properties are initialized indirectly via lifecycle methods or dependency injection frameworks.",
+      "followUp": "What are the runtime risks of using the definite assignment assertion incorrectly?",
+      "code": "class UserComponent {\n  name!: string;\n  ngOnInit() {\n    this.name = 'Alice';\n  }\n}",
+      "id": "ai-typescript-initialisation-1795631092632-1"
+    },
+    {
+      "topic": "TypeScript",
+      "difficulty": "Intermediate",
+      "question": "How does `strictPropertyInitialization` work in TypeScript class definitions?",
+      "answer": "When `strictPropertyInitialization` is enabled in `tsconfig.json`, TypeScript ensures every class instance property is initialized in the class declaration or inside the constructor. If a property is not assigned a value or marked as optional/undefined, the compiler raises a static type error. This prevents unexpected `undefined` runtime errors when accessing instance members.",
+      "followUp": "How does `strictPropertyInitialization` interact with class inheritance and `super()` calls?",
+      "code": "class User {\n  id: number;\n  name: string = 'Anonymous';\n  constructor(id: number) {\n    this.id = id;\n  }\n}",
+      "id": "ai-typescript-initialisation-1795631092632-2",
+      "relatedTool": {
+        "label": "Format & validate JSON",
+        "href": "/tools/json-formatter"
+      }
+    },
+    {
+      "topic": "TypeScript",
+      "difficulty": "Senior",
+      "question": "How do class field initialization order and TypeScript's target ECMAScript version affect property overrides?",
+      "answer": "TypeScript transpires class fields differently depending on the `useDefineForClassFields` setting and target ES version. When set to `true` (standard ES behavior), properties are defined using `Object.defineProperty` during instance creation, which can overwrite properties set by superclass constructors. If `false`, fields are assigned using simple assignment, altering how getters and setters in base classes are triggered.",
+      "followUp": "How can misconfigured `useDefineForClassFields` lead to bugs when migrating legacy TypeScript codebases?",
+      "code": "class Base {\n  set value(v: string) { console.log(v); }\n}\nclass Derived extends Base {\n  value = 'init';\n}",
+      "id": "ai-typescript-initialisation-1795631092632-3"
+    }
+  ]
+}
