@@ -63,7 +63,7 @@ export default function PdfWorkspace({
     const loadPdf = async () => {
       try {
         const pdfjsLib = await import('pdfjs-dist/build/pdf.mjs');
-        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+        pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
         const arrayBuffer = await pdfFile.arrayBuffer();
         const loadingTask = pdfjsLib.getDocument({
